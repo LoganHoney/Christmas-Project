@@ -16,7 +16,7 @@ p {
 }
 button {
     background-color: #1e1e1e; /* Dark button background */
-    color: #ffffff; /* Light button text */
+    color: red; /* Light button text */
     border: 1px solid #ffffff; /* Light border */
     padding: 10px 20px;
     cursor: pointer;
