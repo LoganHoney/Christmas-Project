@@ -10,6 +10,10 @@ h1 {
     color: #ffffff; /* Light color for the heading */
 }
 
+p {
+    color: red;
+    font-weight:bold;
+}
 button {
     background-color: #1e1e1e; /* Dark button background */
     color: #ffffff; /* Light button text */
