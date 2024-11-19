@@ -17,6 +17,15 @@
             display: inline-block;
             margin: 10px;
         }
+        .dancing-santa {
+            width: 100px; /* Adjust size as needed */
+            display: none; /* Initially hidden */
+            animation: dance 0.5s infinite alternate; /* Animation for dancing */
+        }
+        @keyframes dance {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
     </style>
 </head>
 <header>
@@ -24,7 +33,9 @@
 </header>
 <body>
     <button id="generate">Discover your Christmas fortune!</button>
+    <button id="reset">Reset QR Code</button>
     <div id="qr-code" class="qr-code"></div>
+    <img src="https://media.giphy.com/media/3o7buirY8g0g0g0g0g/giphy.gif" alt="Dancing Santa" class="dancing-santa" id="dancing-santa">
 
     <script>
         const urls = [
@@ -53,15 +64,20 @@
 
         function handleGenerateClick() {
             $('#qr-code').empty(); // Clear previous QR code
-            setTimeout(generateQRCode, 2000); // Delay of 2 seconds before generating QR code
+            $('#dancing-santa').show(); // Show dancing Santa
+            setTimeout(generateQRCode, 4000); // Delay of 4 seconds before generating QR code
             
             // Automatically reset the QR code after 10 seconds
             setTimeout(() => {
                 $('#qr-code').empty(); // Clear the QR code after 10 seconds
-            }, 12000); // 2 seconds delay + 10 seconds = 12 seconds total
+                $('#dancing-santa').hide(); // Hide dancing Santa
+            }, 14000); // 4 seconds delay + 10 seconds = 14 seconds total
         }
 
-      
+        function handleResetClick() {
+            $('#qr-code').empty(); // Clear the QR code
+            $('#dancing-santa').hide(); // Hide dancing Santa
+        }
 
         $(document).ready(function() {
             $('#generate').click(handleGenerateClick);
