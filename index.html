@@ -33,6 +33,7 @@
 </header>
 <body>
     <button id="generate">Discover your Christmas fortune!</button>
+    <button id="reset">Reset QR Code</button>
     <div id="qr-code" class="qr-code"></div>
     <img src="https://media.giphy.com/media/3o7buirY8g0g0g0g0g/giphy.gif" alt="Dancing Santa" class="dancing-santa" id="dancing-santa">
 
@@ -59,6 +60,8 @@
             const url = urls[randomIndex]; // Get the corresponding URL
             $('#qr-code').empty(); // Clear previous QR code
             $('#qr-code').qrcode(url); // Generate new QR code with the URL
+            $('#dancing-santa').hide(); // Hide dancing Santa
+            $('#generate').show(); // Show the generate button again
         }
 
         function handleGenerateClick() {
@@ -66,13 +69,6 @@
             $('#dancing-santa').show(); // Show dancing Santa
             $('#generate').hide(); // Hide the generate button
             setTimeout(generateQRCode, 4000); // Delay of 4 seconds before generating QR code
-            
-            // Automatically reset the QR code after 10 seconds
-            setTimeout(() => {
-                $('#qr-code').empty(); // Clear the QR code after 10 seconds
-                $('#dancing-santa').hide(); // Hide dancing Santa
-                $('#generate').show(); // Show the generate button again
-            }, 14000); // 4 seconds delay + 10 seconds = 14 seconds total
         }
 
         function handleResetClick() {
@@ -83,7 +79,7 @@
 
         $(document).ready(function() {
             $('#generate').click(handleGenerateClick);
-        
+            $('#reset').click(handleResetClick);
         });
     </script>
 </body>
