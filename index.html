@@ -70,15 +70,10 @@
             setTimeout(generateQRCode, 4000); // Delay of 4 seconds before generating QR code
         }
 
-        function handleResetClick() {
-            $('#qr-code').empty(); // Clear the QR code
-            $('#dancing-santa').hide(); // Hide dancing Santa
-            $('#generate').show(); // Show the generate button again
-        }
 
         $(document).ready(function() {
             $('#generate').click(handleGenerateClick);
-            $('#reset').click(handleResetClick);
+            
         });
     </script>
 </body>
