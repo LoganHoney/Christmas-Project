@@ -60,7 +60,12 @@
             $('#qr-code').empty(); // Clear previous QR code
             $('#qr-code').qrcode(url); // Generate new QR code with the URL
             $('#dancing-santa').hide(); // Hide dancing Santa
-            $('#generate').show(); // Show the generate button again
+
+            // Set a timeout to hide the QR code and show the button after 10 seconds
+            setTimeout(() => {
+                $('#qr-code').empty(); // Clear the QR code
+                $('#generate').show(); // Show the generate button
+            }, 10000); // 10 seconds
         }
 
         function handleGenerateClick() {
@@ -70,10 +75,8 @@
             setTimeout(generateQRCode, 4000); // Delay of 4 seconds before generating QR code
         }
 
-
         $(document).ready(function() {
             $('#generate').click(handleGenerateClick);
-            
         });
     </script>
 </body>
