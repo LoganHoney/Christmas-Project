@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Quote QR Code Generator</title>
+    <title>QR Code Generator</title>
+	<link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
     <style>
@@ -19,33 +20,33 @@
     </style>
 </head>
 <body>
-    <h1>Random Quote QR Code Generator</h1>
+    <h1>QR Code Generator</h1>
     <button id="generate">Generate QR Code</button>
     <div id="qr-code" class="qr-code"></div>
 
     <script>
-        const quotes = [
-            "The best way to predict the future is to create it. - Peter Drucker",
-            "Life is what happens when you're busy making other plans. - John Lennon",
-            "Get busy living or get busy dying. - Stephen King",
-            "You only live once, but if you do it right, once is enough. - Mae West",
-            "In the end, we will remember not the words of our enemies, but the silence of our friends. - Martin Luther King Jr.",
-            "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment. - Ralph Waldo Emerson",
-            "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
-            "The purpose of our lives is to be happy. - Dalai Lama",
-            "Life is either a daring adventure or nothing at all. - Helen Keller",
-            "You miss 100% of the shots you don't take. - Wayne Gretzky"
+        const urls = [
+            "https://www.google.com",
+            "https://www.facebook.com",
+            "https://loganhoney.com",
+            "https://yount.dev",
+            "https://hernandosheriff.org",
+            "https://www.wikipedia.org",
+            "https://www.github.com",
+            "https://www.stackoverflow.com",
+            "https://www.reddit.com",
+            "https://www.twitter.com"
         ];
 
-        function generateRandomQuote() {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            return quotes[randomIndex];
+        function generateRandomIndex() {
+            return Math.floor(Math.random() * urls.length);
         }
 
         function generateQRCode() {
-            const quote = generateRandomQuote(); // Get a random quote
+            const randomIndex = generateRandomIndex(); // Get a random index
+            const url = urls[randomIndex]; // Get the corresponding URL
             $('#qr-code').empty(); // Clear previous QR code
-            $('#qr-code').qrcode(quote); // Generate new QR code with the quote
+            $('#qr-code').qrcode(url); // Generate new QR code with the URL
         }
 
         $(document).ready(function() {
