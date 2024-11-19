@@ -65,18 +65,21 @@
         function handleGenerateClick() {
             $('#qr-code').empty(); // Clear previous QR code
             $('#dancing-santa').show(); // Show dancing Santa
+            $('#generate').hide(); // Hide the generate button
             setTimeout(generateQRCode, 4000); // Delay of 4 seconds before generating QR code
             
             // Automatically reset the QR code after 10 seconds
             setTimeout(() => {
                 $('#qr-code').empty(); // Clear the QR code after 10 seconds
                 $('#dancing-santa').hide(); // Hide dancing Santa
+                $('#generate').show(); // Show the generate button again
             }, 14000); // 4 seconds delay + 10 seconds = 14 seconds total
         }
 
         function handleResetClick() {
             $('#qr-code').empty(); // Clear the QR code
             $('#dancing-santa').hide(); // Hide dancing Santa
+            $('#generate').show(); // Show the generate button again
         }
 
         $(document).ready(function() {
