@@ -8,6 +8,17 @@ body {
 
 h1 {
     color: #ffffff; /* Light color for the heading */
+    font-family: "Ewert", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+h2{
+    color: #ffffff; /* Light color for the heading */
+    font-family: "Ewert", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 p {
