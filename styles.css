@@ -22,6 +22,14 @@ h2{
     font-style: normal;
 }
 
+.hero-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* optional */
+  background-color: #f2f2f2; /* optional */
+}
+
 p {
     color: red;
     font-weight:bold;
@@ -53,8 +61,5 @@ button:hover {
   font-style: normal;
 }
 
-img {
-    margin: 0 auto; /* This will center the element horizontally */
-}
-    
+
 
