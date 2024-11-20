@@ -3,86 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ho Ho Ho!</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ewert&display=swap" rel="stylesheet">
+    <title>Santar Speaks</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(to bottom, red, white, green);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .container {
             text-align: center;
-            margin: 20px;
         }
-        .qr-code {
-            display: inline-block;
-            margin: 10px;
+        
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Orbitron', sans-serif;
         }
-        .dancing-santa {
-            width: 100px; /* Adjust size as needed */
-            display: none; /* Initially hidden */
-            animation: dance 0.5s infinite alternate;
-            border-radius: 10px;/* Animation for dancing */
+        
+        .qrcode {
+            margin: 20px 0;
         }
-        @keyframes dance {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-10px); }
+        
+        .bold-text {
+            font-weight: bold;
+            font-size: 36px;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        
+        .animation {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<header>
-    <div class = "hero-header">
-        <h1 class = "ewert-regular">SANTAR</h1>
-        <button id="generate">Claim your Christmas fortune!</button>
-        <div id="qr-code" class="qr-code"></div>
-        <img src="giphy.webp" alt="Fat cat" class="dancing-santa" id="dancing-santa"> 
-        <script>
-            const urls = [
-                "https://www.google.com",
-                "https://www.facebook.com",
-                "https://loganhoney.com",
-                "https://yount.dev",
-                "https://hernandosheriff.org",
-                "https://www.wikipedia.org",
-                "https://www.github.com",
-                "https://www.stackoverflow.com",
-                "https://www.reddit.com",
-                "https://www.twitter.com"
-            ];
-    
-            function generateRandomIndex() {
-                return Math.floor(Math.random() * urls.length);
-            }
-    
-            function generateQRCode() {
-                const randomIndex = generateRandomIndex(); // Get a random index
-                const url = urls[randomIndex]; // Get the corresponding URL
-                $('#qr-code').empty(); // Clear previous QR code
-                $('#qr-code').qrcode(url); // Generate new QR code with the URL
-                $('#dancing-santa').hide(); // Hide dancing Santa
-    
-                // Set a timeout to hide the QR code and show the button after 10 seconds
-                setTimeout(() => {
-                    $('#qr-code').empty(); // Clear the QR code
-                    $('#generate').show(); // Show the generate button
-                }, 10000); // 10 seconds
-            }
-    
-            function handleGenerateClick() {
-                $('#qr-code').empty(); // Clear previous QR code
-                $('#dancing-santa').show(); // Show dancing Santa
-                $('#generate').hide(); // Hide the generate button
-                setTimeout(generateQRCode, 4000); // Delay of 4 seconds before generating QR code
-            }
-    
-            $(document).ready(function() {
-                $('#generate').click(handleGenerateClick);
-            });
-        </script>
-        <h1 class = "ewert-regular">SPEAKS</h2>
+<body>
+    <div class="container">
+        <h1 class="bold-text">SANTAR</h1>
+        <button class="button" id="generate-qrcode">Generate QR Code</button>
+        <div class="animation" id="animation"></div>
+        <div class="qrcode" id="qrcode"></div>
+        <h1 class="bold-text">SPEAKS</h1>
     </div>
-</header>
+
+    <script>
+        const websites = [
+            "https://www.google.com",
+            "https://www.bing.com",
+            "https://www.duckduckgo.com",
+            "https://www.startpage.com",
+            "https://www.qwant.com",
+            "https://www.ecosia.org",
+            "https://www.swisscows.com",
+            "https://www.yandex.com",
+            "https://www.baidu.com",
+            "https://www.yahoo.com"
+        ];
+
+        const button = document.getElementById("generate-qrcode");
+        const qrcodeContainer = document.getElementById("qrcode");
+        const animationContainer = document.getElementById("animation");
+
+        button.addEventListener("click", () => {
+            button.style.display = "none";
+            const audio = new Audio("F:\jingles.mp3"); // replace with your own audio file
+            audio.play();
+
+            let animationText = "";
+            const animationInterval = setInterval(() => {
+                animationText += ".";
+                animationContainer.textContent = "Santar knows all" + animationText;
+                if (animationText.length >= 10) {
+                    clearInterval(animationInterval);
+                }
+            }, 500);
+
+            setTimeout(() => {
+                clearInterval(animationInterval);
+                animationContainer.textContent = "";
+                const randomWebsite = websites[Math.floor(Math.random() * websites.length)];
+                const qrcode = document.createElement("img");
+                qrcode.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${randomWebsite}`;
+                qrcodeContainer.appendChild(qrcode);
+            }, 3000);
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 10000);
+    </script>
 </body>
 </html>
+
