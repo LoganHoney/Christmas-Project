@@ -33,3 +33,10 @@ button:hover {
     display: inline-block;
     margin: 10px;
 }
+
+.ewert-regular {
+  font-family: "Ewert", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
