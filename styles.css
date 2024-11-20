@@ -52,3 +52,8 @@ button:hover {
   font-style: normal;
 }
 
+img {
+    margin: 0 auto; /* This will center the element horizontally */
+}
+    
+
