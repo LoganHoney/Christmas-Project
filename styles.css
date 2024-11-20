@@ -23,7 +23,7 @@ h2{
 }
 
 .hero-header {
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
   height: 100vh; /* optional */
