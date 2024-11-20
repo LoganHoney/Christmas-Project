@@ -33,54 +33,56 @@
     </style>
 </head>
 <header>
-    <h1 class = "ewert-regular">SANTAR</h1>
-    <button id="generate">Claim your Christmas fortune!</button>
-    <div id="qr-code" class="qr-code"></div>
-    <img src="giphy.webp" alt="Fat cat" class="dancing-santa" id="dancing-santa"> 
-    <script>
-        const urls = [
-            "https://www.google.com",
-            "https://www.facebook.com",
-            "https://loganhoney.com",
-            "https://yount.dev",
-            "https://hernandosheriff.org",
-            "https://www.wikipedia.org",
-            "https://www.github.com",
-            "https://www.stackoverflow.com",
-            "https://www.reddit.com",
-            "https://www.twitter.com"
-        ];
-
-        function generateRandomIndex() {
-            return Math.floor(Math.random() * urls.length);
-        }
-
-        function generateQRCode() {
-            const randomIndex = generateRandomIndex(); // Get a random index
-            const url = urls[randomIndex]; // Get the corresponding URL
-            $('#qr-code').empty(); // Clear previous QR code
-            $('#qr-code').qrcode(url); // Generate new QR code with the URL
-            $('#dancing-santa').hide(); // Hide dancing Santa
-
-            // Set a timeout to hide the QR code and show the button after 10 seconds
-            setTimeout(() => {
-                $('#qr-code').empty(); // Clear the QR code
-                $('#generate').show(); // Show the generate button
-            }, 10000); // 10 seconds
-        }
-
-        function handleGenerateClick() {
-            $('#qr-code').empty(); // Clear previous QR code
-            $('#dancing-santa').show(); // Show dancing Santa
-            $('#generate').hide(); // Hide the generate button
-            setTimeout(generateQRCode, 4000); // Delay of 4 seconds before generating QR code
-        }
-
-        $(document).ready(function() {
-            $('#generate').click(handleGenerateClick);
-        });
-    </script>
-    <h1 class = "ewert-regular">SPEAKS</h2>
+    <div class = "hero-header">
+        <h1 class = "ewert-regular">SANTAR</h1>
+        <button id="generate">Claim your Christmas fortune!</button>
+        <div id="qr-code" class="qr-code"></div>
+        <img src="giphy.webp" alt="Fat cat" class="dancing-santa" id="dancing-santa"> 
+        <script>
+            const urls = [
+                "https://www.google.com",
+                "https://www.facebook.com",
+                "https://loganhoney.com",
+                "https://yount.dev",
+                "https://hernandosheriff.org",
+                "https://www.wikipedia.org",
+                "https://www.github.com",
+                "https://www.stackoverflow.com",
+                "https://www.reddit.com",
+                "https://www.twitter.com"
+            ];
+    
+            function generateRandomIndex() {
+                return Math.floor(Math.random() * urls.length);
+            }
+    
+            function generateQRCode() {
+                const randomIndex = generateRandomIndex(); // Get a random index
+                const url = urls[randomIndex]; // Get the corresponding URL
+                $('#qr-code').empty(); // Clear previous QR code
+                $('#qr-code').qrcode(url); // Generate new QR code with the URL
+                $('#dancing-santa').hide(); // Hide dancing Santa
+    
+                // Set a timeout to hide the QR code and show the button after 10 seconds
+                setTimeout(() => {
+                    $('#qr-code').empty(); // Clear the QR code
+                    $('#generate').show(); // Show the generate button
+                }, 10000); // 10 seconds
+            }
+    
+            function handleGenerateClick() {
+                $('#qr-code').empty(); // Clear previous QR code
+                $('#dancing-santa').show(); // Show dancing Santa
+                $('#generate').hide(); // Hide the generate button
+                setTimeout(generateQRCode, 4000); // Delay of 4 seconds before generating QR code
+            }
+    
+            $(document).ready(function() {
+                $('#generate').click(handleGenerateClick);
+            });
+        </script>
+        <h1 class = "ewert-regular">SPEAKS</h2>
+    </div>
 </header>
 </body>
 </html>
