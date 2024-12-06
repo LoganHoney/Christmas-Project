@@ -20,15 +20,6 @@
             text-align: center;
         }
         
-        .button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
         .qrcode {
             margin: 20px 0;
         }
@@ -51,7 +42,6 @@
 <body>
     <div class="container">
         <h1 class="bold-text">SANTAR</h1>
-        <button class="button" id="generate-qrcode">Generate QR Code</button>
         <div class="animation" id="animation"></div>
         <div class="qrcode" id="qrcode"></div>
         <h1 class="bold-text">SPEAKS</h1>
@@ -60,36 +50,31 @@
     <script>
         const websites = [
             "santar.lol/in-laws.html"
-  
         ];
 
-        const button = document.getElementById("generate-qrcode");
         const qrcodeContainer = document.getElementById("qrcode");
         const animationContainer = document.getElementById("animation");
 
-        button.addEventListener("click", () => {
-            button.style.display = "none";
-            const audio = new Audio("jingles.mp3"); 
-            audio.play();
+        const audio = new Audio("jingles.mp3"); 
+        audio.play();
 
-            let animationText = "";
-            const animationInterval = setInterval(() => {
-                animationText += ".";
-                animationContainer.textContent = "Santar knows all" + animationText;
-                if (animationText.length >= 10) {
-                    clearInterval(animationInterval);
-                }
-            }, 500);
-
-            setTimeout(() => {
+        let animationText = "";
+        const animationInterval = setInterval(() => {
+            animationText += ".";
+            animationContainer.textContent = "Santar knows all" + animationText;
+            if (animationText.length >= 10) {
                 clearInterval(animationInterval);
-                animationContainer.textContent = "";
-                const randomWebsite = websites[Math.floor(Math.random() * websites.length)];
-                const qrcode = document.createElement("img");
-                qrcode.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${randomWebsite}`;
-                qrcodeContainer.appendChild(qrcode);
-            }, 3000);
-        });
+            }
+        }, 500);
+
+        setTimeout(() => {
+            clearInterval(animationInterval);
+            animationContainer.textContent = "";
+            const randomWebsite = websites[Math.floor(Math.random() * websites.length)];
+            const qrcode = document.createElement("img");
+            qrcode.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${randomWebsite}`;
+            qrcodeContainer.appendChild(qrcode);
+        }, 3000);
 
         setTimeout(() => {
             window.location.reload();
