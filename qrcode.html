@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santar Speaks</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(to bottom, red, white, green);
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .container {
+            text-align: center;
+        }
+        
+        .button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .qrcode {
+            margin: 20px 0;
+        }
+        
+        .bold-text {
+            font-weight: bold;
+            font-size: 36px;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 2px 2px 4px #000000;
+        }
+        
+        .animation {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="bold-text">SANTAR</h1>
+        <button class="button" id="generate-qrcode">Generate QR Code</button>
+        <div class="animation" id="animation"></div>
+        <div class="qrcode" id="qrcode"></div>
+        <h1 class="bold-text">SPEAKS</h1>
+    </div>
+
+    <script>
+        const websites = [
+            "https://www.google.com",
+            "https://www.bing.com",
+            "https://www.duckduckgo.com",
+            "https://www.startpage.com",
+            "https://www.qwant.com",
+            "https://www.ecosia.org",
+            "https://www.swisscows.com",
+            "https://www.yandex.com",
+            "https://www.baidu.com",
+            "https://www.yahoo.com"
+        ];
+
+        const button = document.getElementById("generate-qrcode");
+        const qrcodeContainer = document.getElementById("qrcode");
+        const animationContainer = document.getElementById("animation");
+
+        button.addEventListener("click", () => {
+            button.style.display = "none";
+            const audio = new Audio("jingles.mp3"); 
+            audio.play();
+
+            let animationText = "";
+            const animationInterval = setInterval(() => {
+                animationText += ".";
+                animationContainer.textContent = "Santar knows all" + animationText;
+                if (animationText.length >= 10) {
+                    clearInterval(animationInterval);
+                }
+            }, 500);
+
+            setTimeout(() => {
+                clearInterval(animationInterval);
+                animationContainer.textContent = "";
+                const randomWebsite = websites[Math.floor(Math.random() * websites.length)];
+                const qrcode = document.createElement("img");
+                qrcode.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${randomWebsite}`;
+                qrcodeContainer.appendChild(qrcode);
+            }, 3000);
+        });
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 10000);
+    </script>
+</body>
+</html>
