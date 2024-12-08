@@ -12,12 +12,24 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: linear-gradient(to bottom, red, yellow, blue);
+            background-color: #f2f2f2;
             font-family: 'Orbitron', sans-serif;
         }
         
         .container {
             text-align: center;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ff0000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            background-color: #ffffff;
+            border-image-source: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='20' viewBox='0 0 100 20'%3E%3Cpath d='M0 10 L100 10' stroke='%23ff0000' stroke-width='2'/%3E%3C/svg%3E");
+            border-image-slice: 1;
+            border-image-width: 20px;
+            border-image-outset: 0;
+            border-image-repeat: round;
         }
         
         .qrcode {
@@ -29,12 +41,14 @@
             font-size: 36px;
             font-family: 'Orbitron', sans-serif;
             text-shadow: 2px 2px 4px #000000;
+            color: #008000;
         }
         
         .animation {
             font-size: 24px;
             margin-bottom: 20px;
             font-family: 'Orbitron', sans-serif;
+            color: #ff0000;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
