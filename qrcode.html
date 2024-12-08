@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Santar Speaks</title>
+    <title>The Greatest Show on Earth</title>
     <style>
         body {
             margin: 0;
@@ -12,7 +12,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: linear-gradient(to bottom, red, white, green);
+            background-image: linear-gradient(to bottom, red, yellow, blue);
             font-family: 'Orbitron', sans-serif;
         }
         
@@ -41,28 +41,28 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="bold-text">SANTAR</h1>
+        <h1 class="bold-text">STEP RIGHT UP!</h1>
         <div class="animation" id="animation"></div>
         <div class="qrcode" id="qrcode"></div>
-        <h1 class="bold-text">SPEAKS</h1>
+        <h1 class="bold-text">TO THE GREATEST SHOW ON EARTH!</h1>
     </div>
 
     <script>
         const websites = [
-            "https://santar.lol/in-laws.html"
-            ,"https://santar.lol/in-laws2.html"
+            "https://example.com/circus1.html"
+            ,"https://example.com/circus2.html"
         ];
 
         const qrcodeContainer = document.getElementById("qrcode");
         const animationContainer = document.getElementById("animation");
 
-        const audio = new Audio("jingles.mp3"); 
+        const audio = new Audio("circus-music.mp3"); 
         audio.play();
 
         let animationText = "";
         const animationInterval = setInterval(() => {
             animationText += ".";
-            animationContainer.textContent = "Santar knows all" + animationText;
+            animationContainer.textContent = "The show is about to begin" + animationText;
             if (animationText.length >= 10) {
                 clearInterval(animationInterval);
             }
@@ -78,8 +78,8 @@
         }, 3000);
 
         setTimeout(() => {
-            window.location.reload();
-        }, 10000);
+            window.location.href = "index.html";
+        }, 20000);
     </script>
 </body>
 </html>
