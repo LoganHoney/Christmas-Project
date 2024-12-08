@@ -43,22 +43,14 @@
             text-shadow: 2px 2px 4px #000000;
             color: #008000;
         }
-        
-        .animation {
-            font-size: 24px;
-            margin-bottom: 20px;
-            font-family: 'Orbitron', sans-serif;
-            color: #ff0000;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1 class="bold-text">STEP RIGHT UP!</h1>
-        <div class="animation" id="animation"></div>
+        <h1 class="bold-text">SANTAR</h1>
         <div class="qrcode" id="qrcode"></div>
-        <h1 class="bold-text">TO THE GREATEST SHOW ON EARTH!</h1>
+        <h1 class="bold-text">SPEAKS</h1>
     </div>
 
     <script>
@@ -68,28 +60,11 @@
         ];
 
         const qrcodeContainer = document.getElementById("qrcode");
-        const animationContainer = document.getElementById("animation");
 
-        const audio = new Audio("circus-music.mp3"); 
-        audio.play();
-
-        let animationText = "";
-        const animationInterval = setInterval(() => {
-            animationText += ".";
-            animationContainer.textContent = "The show is about to begin" + animationText;
-            if (animationText.length >= 10) {
-                clearInterval(animationInterval);
-            }
-        }, 500);
-
-        setTimeout(() => {
-            clearInterval(animationInterval);
-            animationContainer.textContent = "";
-            const randomWebsite = websites[Math.floor(Math.random() * websites.length)];
-            const qrcode = document.createElement("img");
-            qrcode.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${randomWebsite}`;
-            qrcodeContainer.appendChild(qrcode);
-        }, 3000);
+        const randomWebsite = websites[Math.floor(Math.random() * websites.length)];
+        const qrcode = document.createElement("img");
+        qrcode.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${randomWebsite}`;
+        qrcodeContainer.appendChild(qrcode);
 
         setTimeout(() => {
             window.location.href = "index.html";
