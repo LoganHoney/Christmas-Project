@@ -114,9 +114,14 @@
         const randomVideo = videos[randomVideoIndex];
         videoSource.src = randomVideo;
 
+        console.log(`Selected video: ${randomVideo}`);
+
         video.addEventListener("ended", () => {
+            console.log("Video ended");
             videoContainer.style.display = "none";
             const randomIndex = Math.floor(Math.random() * websites.length);
             const randomWebsite = websites[randomIndex];
 
-            const qrcodeUrl = `https://api.qrserver.com/v1/create
+            console.log(`Selected website: ${randomWebsite}`);
+
+            const qrcodeUrl
