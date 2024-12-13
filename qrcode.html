@@ -41,88 +41,47 @@
             font-family: "Playfair Display", serif;
             color: #FFFFFF;
         }
-        
-        .video-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
-        .hidden {
-            display: none;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="video-container">
-        <video id="video" autoplay muted>
-            <source src="" type="video/mp4">
-        </video>
-    </div>
     <div class="container">
         <h1 class="bold-text">SCAN ME</h1>
         <div class="qrcode" id="qrcode"></div>
-       <!-- <h1 class="bold-text">SPEAKS</h1> -->
     </div>
 
     <script>
-        const videoUrls = [
-            "https://santar.lol/1.mp4",
-            "https://santar.lol/2.mp4",
-            "https://santar.lol/3.mp4",
-             "https://santar.lol/4.mp4",
-             "https://santar.lol/5.mp4"
+        const websites = [
+            "https://santar.lol/in-laws.html",
+            "https://santar.lol/cookies.html",
+            "https://santar.lol/cheer.html",
+            "https://santar.lol/discover.html",
+            "https://santar.lol/surprise.html",
+            "https://santar.lol/magical.html",
+            "https://santar.lol/peace.html",
+            "https://santar.lol/giving.html",
+            "https://santar.lol/memory.html",
+            "https://santar.lol/kindness.html",
+            "https://santar.lol/heart.html",
+            "https://santar.lol/sweater.html",
+            "https://santar.lol/tangled-lights.html",
+            "https://santar.lol/socks.html",
+            "https://santar.lol/untangling.html",
+            "https://santar.lol/jingle.html",
+            "https://santar.lol/coal.html"
         ];
 
-        const video = document.getElementById("video");
-        const qrcodeContainer = document.getElementById("qrcode");
+        const randomIndex = Math.floor(Math.random() * websites.length);
+        const randomWebsite = websites[randomIndex];
 
-        const randomIndex = Math.floor(Math.random() * videoUrls.length);
-        const randomVideoUrl = videoUrls[randomIndex];
+        const qrcodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=225x225&data=${randomWebsite}`;
+        const qrcode = document.createElement("img");
+        qrcode.src = qrcodeUrl;
+        document.getElementById("qrcode").appendChild(qrcode);
 
-        video.src = randomVideoUrl;
-
-        video.addEventListener("ended", () => {
-            const videoContainer = document.querySelector(".video-container");
-            videoContainer.classList.add("hidden");
-
-            const websites = [
-                "https://santar.lol/in-laws.html",
-                "https://santar.lol/cookies.html",
-                "https://santar.lol/cheer.html",
-                "https://santar.lol/discover.html",
-                "https://santar.lol/surprise.html",
-                "https://santar.lol/magical.html",
-                "https://santar.lol/peace.html",
-                "https://santar.lol/giving.html",
-                "https://santar.lol/memory.html",
-                "https://santar.lol/kindness.html",
-                "https://santar.lol/heart.html",
-                "https://santar.lol/sweater.html",
-                "https://santar.lol/tangled-lights.html",
-                "https://santar.lol/socks.html",
-                "https://santar.lol/untangling.html",
-                "https://santar.lol/jingle.html",
-                 "https://santar.lol/coal.html"
-            ];
-
-            const randomIndex2 = Math.floor(Math.random() * websites.length);
-            const randomWebsite = websites[randomIndex2];
-
-            const qrcodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=225x225&data=${randomWebsite}`;
-            const qrcode = document.createElement("img");
-            qrcode.src = qrcodeUrl;
-            qrcodeContainer.appendChild(qrcode);
-
-            setTimeout(() => {
-                window.location.href = "index.html";
-            }, 20000);
-               });
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 20000);
     </script>
 </body>
 </html>
