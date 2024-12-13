@@ -38,16 +38,11 @@
 
     // Define an index of videos
     const videos = [
-      { src: '1.mp4', type: 'video/mp4' },
-      { src: '2.mp4', type: 'video/mp4' },
-      { src: '3.mp4', type: 'video/mp4' },
-      { src: '4.mp4', type: 'video/mp4' },
-      { src: '5.mp4', type: 'video/mp4' }
+      { src: 'video1.mp4', type: 'video/mp4' },
+      { src: 'video2.mp4', type: 'video/mp4' },
+      { src: 'video3.mp4', type: 'video/mp4' },
       // Add more videos to the index as needed
     ];
-
-    // Initialize the current video index
-    let currentVideoIndex = 0;
 
     // Add an event listener to the document to listen for the space bar key press
     document.addEventListener('keydown', (e) => {
@@ -65,20 +60,18 @@
         newVideo.autoplay = true;
         newVideo.loop = true;
 
-        // Get the next video from the index
-        const nextVideo = videos[(currentVideoIndex + 1) % videos.length];
+        // Get a random video from the index
+        const randomVideoIndex = Math.floor(Math.random() * videos.length);
+        const randomVideo = videos[randomVideoIndex];
 
         // Add a source to the new video element
         const newSource = document.createElement('source');
-        newSource.src = nextVideo.src;
-        newSource.type = nextVideo.type;
+        newSource.src = randomVideo.src;
+        newSource.type = randomVideo.type;
         newVideo.appendChild(newSource);
 
         // Add the new video element to the page
         document.body.appendChild(newVideo);
-
-        // Update the current video index
-        currentVideoIndex = (currentVideoIndex + 1) % videos.length;
 
         // Wait for 5 seconds before redirecting to the new page
         setTimeout(() => {
