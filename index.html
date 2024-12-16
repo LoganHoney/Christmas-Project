@@ -60,10 +60,10 @@
       // Add more videos to the index as needed
     ];
 
-    // Define a transition video
-    const transitionVideo = {
-      src: 'transition.mp4',
-      type: 'video/mp4'
+    // Define a transition video or GIF
+    const transition = {
+      src: 'snow.gif',
+      type: 'image/gif'
     };
 
     // Add an event listener to the document to listen for the space bar key press
@@ -76,20 +76,15 @@
         // Remove the old video element
         video.remove();
 
-        // Create a transition video element
-        const transition = document.createElement('video');
-        transition.className = 'transition';
-        transition.autoplay = true;
-        transition.loop = false;
-        const transitionSource = document.createElement('source');
-        transitionSource.src = transitionVideo.src;
-        transitionSource.type = transitionVideo.type;
-        transition.appendChild(transitionSource);
-        document.body.appendChild(transition);
+        // Create a transition element
+        const transitionElement = document.createElement('img');
+        transitionElement.className = 'transition';
+        transitionElement.src = transition.src;
+        document.body.appendChild(transitionElement);
 
-        // Wait for the transition video to finish playing before removing it
-        transition.addEventListener('ended', () => {
-          transition.remove();
+        // Wait for 2 seconds before removing the transition element
+        setTimeout(() => {
+          transitionElement.remove();
 
           // Create a new video element
           video = document.createElement('video');
@@ -124,7 +119,7 @@
               window.location.href = 'qrcode.html';
             }, duration);
           });
-        });
+        }, 2000);
       }
     });
   </script>
