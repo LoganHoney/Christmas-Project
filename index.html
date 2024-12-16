@@ -90,6 +90,16 @@
 
         document.body.appendChild(transitionElement);
 
+        // Add an event listener to the transition element to check for errors
+        transitionElement.addEventListener('error', (e) => {
+          console.error('Error playing transition GIF:', e);
+        });
+
+        // Add an event listener to the transition element to check for play events
+        transitionElement.addEventListener('play', () => {
+          console.log('Transition GIF started playing');
+        });
+
         // Wait for 2 seconds before removing the transition element
         setTimeout(() => {
           transitionElement.remove();
