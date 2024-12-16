@@ -27,7 +27,7 @@
 </head>
 <body>
   <video id="video" autoplay loop>
-    <source src="snoring.mov" type="video/mp4">
+    <source src="snoring.mov" type="video/quicktime">
     Your browser does not support the video tag.
   </video>
 
@@ -121,6 +121,11 @@
           });
         }, 2000);
       }
+    });
+
+    // Play the video as soon as it is loaded
+    video.addEventListener('canplay', () => {
+      video.play();
     });
   </script>
 </body>
