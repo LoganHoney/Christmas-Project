@@ -83,14 +83,12 @@
       src: 'jingles.mp3',
       type: 'audio/mpeg'
     };
- // Flag to track if the 'a' key has been pressed
-    let aKeyPressed = false;
 
     // Add an event listener to the document to listen for the 'a' key press
     document.addEventListener('keydown', (e) => {
       // Check if the 'a' key was pressed and it hasn't been pressed before
-      if (e.key === 'a' && !aKeyPressed) {
-        aKeyPressed = true;
+      if (e.key === 'a') {
+        
 
         // Pause the current video
         video.pause();
