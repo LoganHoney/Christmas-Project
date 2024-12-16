@@ -63,7 +63,7 @@
     // Define a transition video or GIF
     const transition = {
       src: 'transition.gif',
-      type: 'video/gif'
+      type: 'image/gif'
     };
 
     // Add an event listener to the document to listen for the space bar key press
@@ -77,28 +77,10 @@
         video.remove();
 
         // Create a transition element
-        const transitionElement = document.createElement('video');
+        const transitionElement = document.createElement('img');
         transitionElement.className = 'transition';
-        transitionElement.autoplay = true;
-        transitionElement.loop = true;
-
-        // Add a source to the transition element
-        const transitionSource = document.createElement('source');
-        transitionSource.src = transition.src;
-        transitionSource.type = transition.type;
-        transitionElement.appendChild(transitionSource);
-
+        transitionElement.src = transition.src;
         document.body.appendChild(transitionElement);
-
-        // Add an event listener to the transition element to check for errors
-        transitionElement.addEventListener('error', (e) => {
-          console.error('Error playing transition GIF:', e);
-        });
-
-        // Add an event listener to the transition element to check for play events
-        transitionElement.addEventListener('play', () => {
-          console.log('Transition GIF started playing');
-        });
 
         // Wait for 2 seconds before removing the transition element
         setTimeout(() => {
