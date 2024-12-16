@@ -12,6 +12,17 @@
     .hidden {
       display: none;
     }
+    .transition {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   </style>
 </head>
 <body>
@@ -49,6 +60,12 @@
       // Add more videos to the index as needed
     ];
 
+    // Define a transition video
+    const transitionVideo = {
+      src: 'transition.mp4',
+      type: 'video/mp4'
+    };
+
     // Add an event listener to the document to listen for the space bar key press
     document.addEventListener('keydown', (e) => {
       // Check if the space bar was pressed
@@ -59,38 +76,54 @@
         // Remove the old video element
         video.remove();
 
-        // Create a new video element
-        video = document.createElement('video');
-        video.style.width = '1280px';
-        video.style.height = '1024px';
-        video.style.display = 'block';
-        video.style.margin = '0 auto';
-        video.autoplay = true;
-        video.loop = true;
+        // Create a transition video element
+        const transition = document.createElement('video');
+        transition.className = 'transition';
+        transition.autoplay = true;
+        transition.loop = false;
+        const transitionSource = document.createElement('source');
+        transitionSource.src = transitionVideo.src;
+        transitionSource.type = transitionVideo.type;
+        transition.appendChild(transitionSource);
+        document.body.appendChild(transition);
 
-        // Get a random video from the index
-        const randomVideoIndex = Math.floor(Math.random() * videos.length);
-        const randomVideo = videos[randomVideoIndex];
+        // Wait for the transition video to finish playing before removing it
+        transition.addEventListener('ended', () => {
+          transition.remove();
 
-        // Add a source to the new video element
-        const newSource = document.createElement('source');
-        newSource.src = randomVideo.src;
-        newSource.type = randomVideo.type;
-        video.appendChild(newSource);
+          // Create a new video element
+          video = document.createElement('video');
+          video.style.width = '1280px';
+          video.style.height = '1024px';
+          video.style.display = 'block';
+          video.style.margin = '0 auto';
+          video.autoplay = true;
+          video.loop = true;
 
-        // Add the new video element to the page
-        document.body.appendChild(video);
+          // Get a random video from the index
+          const randomVideoIndex = Math.floor(Math.random() * videos.length);
+          const randomVideo = videos[randomVideoIndex];
 
-        // Add an event listener to the video to get its duration
-        video.addEventListener('loadedmetadata', () => {
-          // Get the duration of the video
-          const duration = video.duration * 1000;
+          // Add a source to the new video element
+          const newSource = document.createElement('source');
+          newSource.src = randomVideo.src;
+          newSource.type = randomVideo.type;
+          video.appendChild(newSource);
 
-          // Wait for the duration of the video before redirecting to the new page
-          setTimeout(() => {
-            // Redirect to a different page
-            window.location.href = 'qrcode.html';
-          }, duration);
+          // Add the new video element to the page
+          document.body.appendChild(video);
+
+          // Add an event listener to the video to get its duration
+          video.addEventListener('loadedmetadata', () => {
+            // Get the duration of the video
+            const duration = video.duration * 1000;
+
+            // Wait for the duration of the video before redirecting to the new page
+            setTimeout(() => {
+              // Redirect to a different page
+              window.location.href = 'qrcode.html';
+            }, duration);
+          });
         });
       }
     });
