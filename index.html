@@ -22,7 +22,7 @@
 
   <script>
     // Get the video element
-    const video = document.getElementById('video');
+    let video = document.getElementById('video');
 
     // Add an event listener to the video to handle errors
     video.addEventListener('error', (e) => {
@@ -56,17 +56,17 @@
         // Pause the current video
         video.pause();
 
-        // Add the hidden class to the video element
-        video.classList.add('hidden');
+        // Remove the old video element
+        video.remove();
 
         // Create a new video element
-        const newVideo = document.createElement('video');
-        newVideo.style.width = '1280px';
-        newVideo.style.height = '1024px';
-        newVideo.style.display = 'block';
-        newVideo.style.margin = '0 auto';
-        newVideo.autoplay = true;
-        newVideo.loop = true;
+        video = document.createElement('video');
+        video.style.width = '1280px';
+        video.style.height = '1024px';
+        video.style.display = 'block';
+        video.style.margin = '0 auto';
+        video.autoplay = true;
+        video.loop = true;
 
         // Get a random video from the index
         const randomVideoIndex = Math.floor(Math.random() * videos.length);
@@ -76,10 +76,10 @@
         const newSource = document.createElement('source');
         newSource.src = randomVideo.src;
         newSource.type = randomVideo.type;
-        newVideo.appendChild(newSource);
+        video.appendChild(newSource);
 
         // Add the new video element to the page
-        document.body.appendChild(newVideo);
+        document.body.appendChild(video);
 
         // Wait for 5 seconds before redirecting to the new page
         setTimeout(() => {
