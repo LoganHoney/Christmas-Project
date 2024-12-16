@@ -81,11 +81,17 @@
         // Add the new video element to the page
         document.body.appendChild(video);
 
-        // Wait for 5 seconds before redirecting to the new page
-        setTimeout(() => {
-          // Redirect to a different page
-          window.location.href = 'qrcode.html';
-        }, 5000);
+        // Add an event listener to the video to get its duration
+        video.addEventListener('loadedmetadata', () => {
+          // Get the duration of the video
+          const duration = video.duration * 1000;
+
+          // Wait for the duration of the video before redirecting to the new page
+          setTimeout(() => {
+            // Redirect to a different page
+            window.location.href = 'qrcode.html';
+          }, duration);
+        });
       }
     });
   </script>
