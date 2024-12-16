@@ -9,6 +9,9 @@
       display: block;
       margin: 0 auto;
     }
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -52,6 +55,9 @@
       if (e.key === ' ') {
         // Pause the current video
         video.pause();
+
+        // Add the hidden class to the video element
+        video.classList.add('hidden');
 
         // Create a new video element
         const newVideo = document.createElement('video');
