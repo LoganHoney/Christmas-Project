@@ -26,7 +26,7 @@
   </style>
 </head>
 <body>
-  <video id="video" autoplay loop>
+  <video id="video" loop>
     <source src="snoring.mov" type="video/quicktime">
     Your browser does not support the video tag.
   </video>
@@ -92,7 +92,6 @@
           video.style.height = '1024px';
           video.style.display = 'block';
           video.style.margin = '0 auto';
-          video.autoplay = true;
           video.loop = true;
 
           // Get a random video from the index
@@ -123,8 +122,8 @@
       }
     });
 
-    // Play the video as soon as it is loaded
-    video.addEventListener('canplay', () => {
+    // Play the video when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
       video.play();
     });
   </script>
