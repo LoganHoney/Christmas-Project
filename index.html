@@ -122,8 +122,9 @@
       }
     });
 
-    // Play the video when the page loads
+    // Load the video when the page loads
     document.addEventListener('DOMContentLoaded', () => {
+      video.load();
       video.play();
     });
   </script>
