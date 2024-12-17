@@ -52,13 +52,13 @@
       // Add an event listener to the video to handle the play event
       video.addEventListener('play', () => {
         console.log('Video started playing');
-        audio.play();
+    
       });
 
       // Add an event listener to the video to handle the pause event
       video.addEventListener('pause', () => {
         console.log('Video paused');
-        audio.pause();
+      
       });
     }
 
@@ -99,7 +99,7 @@
 
         // Pause the current video
         video.pause();
-        audio.pause();
+     
 
         // Remove the old video element
         video.remove();
