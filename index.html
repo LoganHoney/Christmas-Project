@@ -84,10 +84,16 @@
       type: 'audio/mpeg'
     };
 
+    // Flag to track whether the 'a' button is currently disabled
+    let aButtonDisabled = false;
+
     // Add an event listener to the document to listen for the a bar key press
     document.addEventListener('keydown', (e) => {
       // Check if the space bar was pressed
-      if (e.key === 'a') {
+      if (e.key === 'a' && !aButtonDisabled) {
+        // Disable the 'a' button
+        aButtonDisabled = true;
+
         // Pause the current video
         video.pause();
 
@@ -135,6 +141,7 @@
           newSource.src = randomVideo.src;
           newSource.type = randomVideo.type;
           video.appendChild(newSource);
+
 
           // Add the new video element to the page
           document.body.appendChild(video);
