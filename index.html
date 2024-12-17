@@ -32,10 +32,12 @@
   </style>
 </head>
 <body>
-  <video id="video" loop oncanplay ="this.play()">
+  <video id="video" muted loop oncanplay ="this.play()">
+
     <source src="sleep.mp4" >
     Your browser does not support the video tag.
   </video>
+  <audio id="audio" src="snoring.mp3" type="audio/mpeg" loop></audio>
 
   <script>
     // Get the video element
@@ -51,11 +53,13 @@
       // Add an event listener to the video to handle the play event
       video.addEventListener('play', () => {
         console.log('Video started playing');
+        audio.play();
       });
 
       // Add an event listener to the video to handle the pause event
       video.addEventListener('pause', () => {
         console.log('Video paused');
+        audio.pause();
       });
     }
 
@@ -96,6 +100,7 @@
 
         // Pause the current video
         video.pause();
+        audio.pause();
 
         // Remove the old video element
         video.remove();
