@@ -4,8 +4,8 @@
   <title>Video Player</title>
   <style>
     video {
-      width: 1280px;
-      height: 1024px;
+      width: 1024px;
+      height: 820px;
       display: block;
       margin: 120px auto 0 auto;
     }
@@ -24,8 +24,8 @@
       align-items: center;
     }
     .transition img {
-      width: 1280px;
-      height: 1024px;
+      width: 1024px;
+      height: 820px;
       display: block;
       margin: 0 auto;
     }
@@ -74,7 +74,7 @@
 
     // Define a transition video or GIF
     const transition = {
-      src: 'candy.gif',
+      src: 'snow.gif',
       type: 'image/gif'
     };
 
@@ -126,10 +126,10 @@
 
           // Create a new video element
           video = document.createElement('video');
-          video.style.width = '1280px';
-          video.style.height = '1024px';
+          video.style.width = '1024px';
+          video.style.height = '820px';
           video.style.display = 'block';
-          video.style.margin = '120px auto 0 auto';
+          video.style.margin = '0 auto';
           video.loop = true;
 
           // Get a random video from the index
@@ -164,7 +164,7 @@
 
           // Play the new video
           video.play();
-        }, 3500);
+        }, 4000);
       }
     });
   </script>
