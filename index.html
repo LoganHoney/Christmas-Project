@@ -17,6 +17,9 @@
       height: 1024px;
       display: block;
       margin: 120px auto 0 auto;
+  
+
+
     }
     .transition img {
       width: 1024px;
@@ -27,18 +30,16 @@
   </style>
 </head>
 <body>
-  <video id="video" loop oncanplay="this.play()">
-    <source src="sleep1.mp4" id="video-source">
+  <video id="video" loop oncanplay ="this.play()">
+    <source src="sleep1.mp4" >
     Your browser does not support the video tag.
   </video>
 
-
   <script>
-    // Get the video and audio elements
+    // Get the video element
     let video = document.getElementById('video');
-    let audio = document.getElementById('audio');
 
-    // Function to add event listeners to the video and audio
+    // Function to add event listeners to the video
     function addEventListeners() {
       // Add an event listener to the video to handle errors
       video.addEventListener('error', (e) => {
@@ -48,21 +49,15 @@
       // Add an event listener to the video to handle the play event
       video.addEventListener('play', () => {
         console.log('Video started playing');
-        // Check if the current video is sleep.mp4 and start the snoring audio
-        if (video.querySelector('source').src === 'sleep.mp4') {
-          audio.play();
-        }
       });
 
       // Add an event listener to the video to handle the pause event
       video.addEventListener('pause', () => {
         console.log('Video paused');
-        // Pause the snoring audio when the video pauses
-        audio.pause();
       });
     }
 
-    // Add event listeners to the initial video and audio
+    // Add event listeners to the initial video
     addEventListeners();
 
     // Define an index of videos
@@ -72,6 +67,7 @@
       { src: '3.mp4', type: 'video/mp4' },
       { src: '4.mp4', type: 'video/mp4' },
       { src: '5.mp4', type: 'video/mp4' },
+      // Add more videos to the index as needed
     ];
 
     // Define a transition video or GIF
@@ -96,13 +92,11 @@
         // Disable the 'a' button
         aButtonDisabled = true;
 
-        // Pause the current video and audio
+        // Pause the current video
         video.pause();
-        audio.pause();
 
-        // Remove the old video and audio elements
+        // Remove the old video element
         video.remove();
-        audio.remove();
 
         // Create a transition element
         const transitionElement = document.createElement('div');
@@ -146,17 +140,11 @@
           newSource.type = randomVideo.type;
           video.appendChild(newSource);
 
-          // Create a new audio element for the snoring sound
-          audio = document.createElement('audio');
-          audio.src = 'snoring.mp3';
-          audio.type = 'audio/mpeg';
-          audio.loop = true;
 
-          // Add the new video and audio elements to the page
+          // Add the new video element to the page
           document.body.appendChild(video);
-          document.body.appendChild(audio);
 
-          // Add event listeners to the new video and audio
+          // Add event listeners to the new video
           addEventListeners();
 
           // Add an event listener to the video to get its duration
@@ -172,9 +160,8 @@
             }, duration);
           });
 
-          // Play the new video and audio
+          // Play the new video
           video.play();
-          audio.play();
         }, 3500);
       }
     });
