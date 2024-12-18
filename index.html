@@ -27,7 +27,7 @@
   </style>
 </head>
 <body>
-  <video id="video" muted loop oncanplay="this.play()">
+  <video id="video" loop oncanplay="this.play()">
     <source src="sleep.mp4" id="video-source">
     Your browser does not support the video tag.
   </video>
@@ -52,7 +52,7 @@
       // Add an event listener to the video to handle the play event
       video.addEventListener('play', () => {
         console.log('Video started playing');
-        // Start playing the snoring audio only if the current video is sleep.mp4
+        // Check if the current video is sleep.mp4 and start the snoring audio
         if (video.querySelector('source').src.includes('sleep.mp4')) {
           audio.play();
         }
