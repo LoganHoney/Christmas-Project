@@ -13,16 +13,18 @@
       display: none;
     }
     .transition {
-      width: 1280px;
-      height: 1024px;
-      display: block;
-      margin: 120px auto 0 auto;
-  
-
-
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .transition img {
-      width: 1024px;
+      width: 1280px;
       height: 1024px;
       display: block;
       margin: 0 auto;
@@ -30,8 +32,8 @@
   </style>
 </head>
 <body>
-  <video id="video" loop oncanplay ="this.play()">
-    <source src="sleep1.mp4" >
+  <video id="video" muted loop oncanplay ="this.play()">
+    <source src="sleep.mp4" >
     Your browser does not support the video tag.
   </video>
 
@@ -72,7 +74,7 @@
 
     // Define a transition video or GIF
     const transition = {
-      src: 'candy.gif',
+      src: 'snow.gif',
       type: 'image/gif'
     };
 
@@ -127,7 +129,7 @@
           video.style.width = '1280px';
           video.style.height = '1024px';
           video.style.display = 'block';
-          video.style.margin = '120px auto 0 auto';
+          video.style.margin = '40px auto 0 auto';
           video.loop = true;
 
           // Get a random video from the index
@@ -162,7 +164,7 @@
 
           // Play the new video
           video.play();
-        }, 3500);
+        }, 4000);
       }
     });
   </script>
